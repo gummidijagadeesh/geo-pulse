@@ -54,3 +54,19 @@ SELECT
 FROM GEO_PULSE_DB.RAW_DATA.GPS_PINGS;
 
 select * from geo_pulse_db.raw_data.gps_pings limit 10;
+
+
+copy into geo_pulse_db.raw_data.store_data(
+store_id,
+latitude,
+longitude,
+city
+)from(
+select $1, $2, $3, $4
+from @geo_pulse_db.raw_data.store_stage/cleaned_store_data.csv
+)
+file_format = (format_name='GEO_PULSE_DB.RAW_DATA.GPS_CSV_FORMAT') 
+ON_ERROR = 'ABORT_STATEMENT';
+
+select * from raw_data.store_data
+limit 5;

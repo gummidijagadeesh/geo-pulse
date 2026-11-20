@@ -26,3 +26,18 @@ SELECT
 FROM @GEO_PULSE_DB.RAW_DATA.GPS_STAGE/cleaned_data.csv
     (FILE_FORMAT => 'GEO_PULSE_DB.RAW_DATA.GPS_CSV_FORMAT')
 LIMIT 5;
+
+
+--store_data internal stage
+create stage if not exists store_stage
+file_format = gps_csv_format;
+
+show stages;
+
+list @geo_pulse_db.raw_data.store_stage;
+
+select 
+$1, $2, $3, $4 
+from @geo_pulse_db.raw_data.store_stage/cleaned_store_data.csv
+(FILE_FORMAT => 'GEO_PULSE_DB.RAW_DATA.GPS_CSV_FORMAT')
+LIMIT 5;

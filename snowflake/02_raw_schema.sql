@@ -21,3 +21,13 @@ location geography
 desc table geo_pulse_db.raw_data.gps_pings;
 
 show tables in geo_pulse_db.raw_data;
+
+
+create table if not exists store_data(
+store_id varchar(30),
+latitude float,
+longitude float,
+city varchar(50)
+);
+
+desc table store_data;
