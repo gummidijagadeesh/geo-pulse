@@ -70,3 +70,16 @@ ON_ERROR = 'ABORT_STATEMENT';
 
 select * from raw_data.store_data
 limit 5;
+
+
+alter table raw_data.store_data add column location geography;
+
+desc table raw_data.store_data;
+
+update raw_data.store_data
+set location = st_makepoint(longitude,latitude);
+
+select count(location) as c_loc from raw_data.store_data;
+
+select * from raw_data.store_data
+limit 10;

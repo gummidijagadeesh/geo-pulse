@@ -1,3 +1,5 @@
 pandas
 numpy
 notebook
+pyspark
+apache-sedona
