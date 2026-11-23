@@ -1,5 +1,5 @@
-pandas
+pandas==2.2.3
 numpy
 notebook
-pyspark
+pyspark==4.0.1
 apache-sedona
